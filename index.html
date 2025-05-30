@@ -3,39 +3,75 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Deadly Premium Ranks</title>
+<title>Deadly Premium Ranks with Tabs</title>
 <style>
   body {
-    background-color: #0b0f19; /* darker background */
+    background-color: #0b0f19;
     color: #ddd;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
     margin: 0;
   }
 
+  /* Tabs container */
+  .tabs {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    display: flex;
+    border-bottom: 3px solid #e64949;
+  }
+
+  /* Each tab button */
+  .tab-button {
+    flex: 1;
+    padding: 12px 0;
+    background: #1a2634;
+    color: #ddd;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-right: 2px solid #e64949;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+  }
+
+  .tab-button:last-child {
+    border-right: none;
+  }
+
+  .tab-button:hover {
+    background-color: #e64949;
+    color: #fff;
+  }
+
+  /* Active tab */
+  .tab-button.active {
+    background-color: #e64949;
+    color: #fff;
+    box-shadow: 0 0 8px #ff4b4b;
+  }
+
+  /* Content for each tab */
+  .tab-content {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #1a2634;
+    border-left: 6px solid #e64949;
+    box-shadow: 0 0 10px #e64949aa;
+    border-radius: 12px;
+    padding: 20px 25px;
+    color: #ddd;
+  }
+
+  /* Hide all tab content by default */
+  .tab-content:not(.active) {
+    display: none;
+  }
+
   h2 {
     text-shadow: 0 0 8px #ff4b4b;
     margin-bottom: 20px;
-  }
-
-  .ranks {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .rank-card {
-    background-color: #1a2634;
-    border-left: 6px solid #e64949; /* strong red border */
-    box-shadow: 0 0 10px #e64949aa; /* red glow effect */
-    padding: 20px 25px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .rank-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px #ff3b3bcc;
   }
 
   .rank-title {
@@ -59,113 +95,143 @@
 </style>
 </head>
 <body>
-  <div class="ranks">
-    <h2>🎖️ RANK PERKS LIST 🎖️</h2>
 
-    <div class="rank-card">
-      <div class="rank-title">🔑 Vip – ₱40 / $0.72</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>2 Auction Slots</li>
-        <li>/kit Vip (10 hour cooldown)</li>
-        <li>2 Home Slots</li>
-      </ul>
-    </div>
+<div class="tabs">
+  <div class="tab-button active" data-tab="ranks">Ranks</div>
+  <div class="tab-button" data-tab="info">Info</div>
+</div>
 
-    <div class="rank-card">
-      <div class="rank-title">🔑 Vip+ – ₱60 / $1.08</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>4 Auction Slots</li>
-        <li>/kit Vip+ (12 hour cooldown)</li>
-        <li>2 Home Slots</li>
-      </ul>
-    </div>
+<div id="ranks" class="tab-content active">
+  <h2>🎖️ RANK PERKS LIST 🎖️</h2>
 
-    <div class="rank-card">
-      <div class="rank-title">🔑 Mvp – ₱80 / $1.44</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>6 Auction Slots</li>
-        <li>/kit Mvp (14 hour cooldown)</li>
-        <li>3 Home Slots</li>
-      </ul>
-    </div>
-
-    <div class="rank-card">
-      <div class="rank-title">🔑 Mvp+ – ₱100 / $1.80</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>8 Auction Slots</li>
-        <li>/kit Mvp+ (16 hour cooldown)</li>
-        <li>3 Home Slots</li>
-        <li>/echest</li>
-      </ul>
-    </div>
-
-    <div class="rank-card">
-      <div class="rank-title">🔑 Deadly – ₱150 / $2.70</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>10 Auction Slots</li>
-        <li>/kit Deadly (18 hour cooldown)</li>
-        <li>4 Home Slots</li>
-        <li>/echest</li>
-      </ul>
-    </div>
-
-    <div class="rank-card">
-      <div class="rank-title">🔑 Deadliest – ₱180 / $3.24</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>12 Auction Slots</li>
-        <li>/kit Deadliest (20 hour cooldown)</li>
-        <li>5 Home Slots</li>
-        <li>/echest</li>
-      </ul>
-    </div>
-
-    <div class="rank-card">
-      <div class="rank-title">🔑 Deadliest+ – ₱240 / $4.32</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>15 Auction Slots</li>
-        <li>/kit Deadliest+ (24 hour cooldown)</li>
-        <li>/kit Deadliest (16 hour cooldown)</li>
-        <li>5 Home Slots</li>
-        <li>/echest</li>
-        <li>/fly on lobby</li>
-      </ul>
-    </div>
-
-    <div class="rank-card">
-      <div class="rank-title">🎭 Jester – ₱280 / $5.04</div>
-      <ul class="rank-perks">
-        <li>Tab Priority & Color</li>
-        <li>Tab Prefix</li>
-        <li>Nametag Prefix & Color</li>
-        <li>18 Auction Slots</li>
-        <li>/kit Jester (28 hour cooldown)</li>
-        <li>/kit Deadliest+ (20 hour cooldown)</li>
-        <li>6 Home Slots</li>
-        <li>/echest</li>
-        <li>/fly on lobby</li>
-      </ul>
-    </div>
+  <div class="rank-card">
+    <div class="rank-title">🔑 Vip – ₱40 / $0.72</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>2 Auction Slots</li>
+      <li>/kit Vip (10 hour cooldown)</li>
+      <li>2 Home Slots</li>
+    </ul>
   </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🔑 Vip+ – ₱60 / $1.08</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>4 Auction Slots</li>
+      <li>/kit Vip+ (12 hour cooldown)</li>
+      <li>2 Home Slots</li>
+    </ul>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🔑 Mvp – ₱80 / $1.44</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>6 Auction Slots</li>
+      <li>/kit Mvp (14 hour cooldown)</li>
+      <li>3 Home Slots</li>
+    </ul>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🔑 Mvp+ – ₱100 / $1.80</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>8 Auction Slots</li>
+      <li>/kit Mvp+ (16 hour cooldown)</li>
+      <li>3 Home Slots</li>
+      <li>/echest</li>
+    </ul>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🔑 Deadly – ₱150 / $2.70</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>10 Auction Slots</li>
+      <li>/kit Deadly (18 hour cooldown)</li>
+      <li>4 Home Slots</li>
+      <li>/echest</li>
+    </ul>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🔑 Deadliest – ₱180 / $3.24</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>12 Auction Slots</li>
+      <li>/kit Deadliest (20 hour cooldown)</li>
+      <li>5 Home Slots</li>
+      <li>/echest</li>
+    </ul>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🔑 Deadliest+ – ₱240 / $4.32</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>15 Auction Slots</li>
+      <li>/kit Deadliest+ (24 hour cooldown)</li>
+      <li>/kit Deadliest (16 hour cooldown)</li>
+      <li>5 Home Slots</li>
+      <li>/echest</li>
+      <li>/fly on lobby</li>
+    </ul>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-title">🎭 Jester – ₱280 / $5.04</div>
+    <ul class="rank-perks">
+      <li>Tab Priority & Color</li>
+      <li>Tab Prefix</li>
+      <li>Nametag Prefix & Color</li>
+      <li>18 Auction Slots</li>
+      <li>/kit Jester (28 hour cooldown)</li>
+      <li>/kit Deadliest+ (20 hour cooldown)</li>
+      <li>6 Home Slots</li>
+      <li>/echest</li>
+      <li>/fly on lobby</li>
+    </ul>
+  </div>
+</div>
+
+<div id="info" class="tab-content">
+  <h2>Information</h2>
+  <p>This is some placeholder text for the Info tab. You can put whatever content you want here.</p>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and contents
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Add active class to clicked tab and matching content
+      tab.classList.add('active');
+      const tabId = tab.getAttribute('data-tab');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
