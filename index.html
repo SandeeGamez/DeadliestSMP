@@ -1,237 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Deadly Premium Ranks with Tabs</title>
-<style>
-  body {
-    background-color: #0b0f19;
-    color: #ddd;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
-    margin: 0;
-  }
-
-  /* Tabs container */
-  .tabs {
-    max-width: 700px;
-    margin: 0 auto 20px;
-    display: flex;
-    border-bottom: 3px solid #e64949;
-  }
-
-  /* Each tab button */
-  .tab-button {
-    flex: 1;
-    padding: 12px 0;
-    background: #1a2634;
-    color: #ddd;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-right: 2px solid #e64949;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    user-select: none;
-  }
-
-  .tab-button:last-child {
-    border-right: none;
-  }
-
-  .tab-button:hover {
-    background-color: #e64949;
-    color: #fff;
-  }
-
-  /* Active tab */
-  .tab-button.active {
-    background-color: #e64949;
-    color: #fff;
-    box-shadow: 0 0 8px #ff4b4b;
-  }
-
-  /* Content for each tab */
-  .tab-content {
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: #1a2634;
-    border-left: 6px solid #e64949;
-    box-shadow: 0 0 10px #e64949aa;
-    border-radius: 12px;
-    padding: 20px 25px;
-    color: #ddd;
-  }
-
-  /* Hide all tab content by default */
-  .tab-content:not(.active) {
-    display: none;
-  }
-
-  h2 {
-    text-shadow: 0 0 8px #ff4b4b;
-    margin-bottom: 20px;
-  }
-
-  .rank-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #f9c74f;
-    margin-bottom: 8px;
-    text-shadow: 0 0 5px #ff6f6f;
-  }
-
-  .rank-perks {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-
-  .rank-perks li {
-    margin-bottom: 6px;
-    font-size: 1.05rem;
-    color: #ddd;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deadliest SMP</title>
+  <style>
+    /* Your existing styles here, unchanged */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #121923;
+      color: #eee;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #e64949;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    p.sub {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+    .btns {
+      margin-bottom: 50px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      color: white;
+    }
+    .btn-primary {
+      background-color: #e64949;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #c73d3d;
+    }
+    .btn-dark {
+      background-color: #333;
+      color: white;
+    }
+    .btn-dark:hover {
+      background-color: #222;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      background: #1e2a3a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 180px;
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #76f3e5;
+    }
+    .stat-label {
+      font-size: 1rem;
+      margin-top: 5px;
+      color: #ccc;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Deadliest SMP</h1>
+    <p class="sub">Join the ultimate Minecraft Semi Economy &amp; Twists experience!</p>
+    <div class="btns">
+      <button class="btn btn-primary">▶ Join Server Now</button>
+      <button class="btn btn-dark">🛍️ Browse Store</button>
+      <!-- New Ranks button -->
+      <a href="ranks.html" class="btn btn-primary" style="margin-left: 10px;">🎖️ Ranks</a>
+    </div>
 
-<div class="tabs">
-  <div class="tab-button active" data-tab="ranks">Ranks</div>
-  <div class="tab-button" data-tab="info">Info</div>
-</div>
+    <p class="sub">Join thousands of players in the most challenging survival experience</p>
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-number">274</div>
+        <div class="stat-label">Discord Members</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">87</div>
+        <div class="stat-label">Online Members</div>
+      </div>
+    </div>
 
-<div id="ranks" class="tab-content active">
-  <h2>🎖️ RANK PERKS LIST 🎖️</h2>
+    <p class="section-title">Upgrade your experience with exclusive ranks and mystery crates</p>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Vip – ₱40 / $0.72</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>2 Auction Slots</li>
-      <li>/kit Vip (10 hour cooldown)</li>
-      <li>2 Home Slots</li>
-    </ul>
+    <!-- No ranks perks here anymore -->
+
   </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🔑 Vip+ – ₱60 / $1.08</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>4 Auction Slots</li>
-      <li>/kit Vip+ (12 hour cooldown)</li>
-      <li>2 Home Slots</li>
-    </ul>
-  </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🔑 Mvp – ₱80 / $1.44</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>6 Auction Slots</li>
-      <li>/kit Mvp (14 hour cooldown)</li>
-      <li>3 Home Slots</li>
-    </ul>
-  </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🔑 Mvp+ – ₱100 / $1.80</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>8 Auction Slots</li>
-      <li>/kit Mvp+ (16 hour cooldown)</li>
-      <li>3 Home Slots</li>
-      <li>/echest</li>
-    </ul>
-  </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🔑 Deadly – ₱150 / $2.70</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>10 Auction Slots</li>
-      <li>/kit Deadly (18 hour cooldown)</li>
-      <li>4 Home Slots</li>
-      <li>/echest</li>
-    </ul>
-  </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🔑 Deadliest – ₱180 / $3.24</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>12 Auction Slots</li>
-      <li>/kit Deadliest (20 hour cooldown)</li>
-      <li>5 Home Slots</li>
-      <li>/echest</li>
-    </ul>
-  </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🔑 Deadliest+ – ₱240 / $4.32</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>15 Auction Slots</li>
-      <li>/kit Deadliest+ (24 hour cooldown)</li>
-      <li>/kit Deadliest (16 hour cooldown)</li>
-      <li>5 Home Slots</li>
-      <li>/echest</li>
-      <li>/fly on lobby</li>
-    </ul>
-  </div>
-
-  <div class="rank-card">
-    <div class="rank-title">🎭 Jester – ₱280 / $5.04</div>
-    <ul class="rank-perks">
-      <li>Tab Priority & Color</li>
-      <li>Tab Prefix</li>
-      <li>Nametag Prefix & Color</li>
-      <li>18 Auction Slots</li>
-      <li>/kit Jester (28 hour cooldown)</li>
-      <li>/kit Deadliest+ (20 hour cooldown)</li>
-      <li>6 Home Slots</li>
-      <li>/echest</li>
-      <li>/fly on lobby</li>
-    </ul>
-  </div>
-</div>
-
-<div id="info" class="tab-content">
-  <h2>Information</h2>
-  <p>This is some placeholder text for the Info tab. You can put whatever content you want here.</p>
-</div>
-
-<script>
-  const tabs = document.querySelectorAll('.tab-button');
-  const contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active class from all tabs and contents
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-
-      // Add active class to clicked tab and matching content
-      tab.classList.add('active');
-      const tabId = tab.getAttribute('data-tab');
-      document.getElementById(tabId).classList.add('active');
-    });
-  });
-</script>
-
 </body>
 </html>
+
