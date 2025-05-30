@@ -160,11 +160,11 @@
     <p class="sub">Join thousands of players in the most challenging survival experience</p>
     <div class="stats">
       <div class="stat-box">
-        <div class="stat-number" id="discord-members">--</div>
+        <div class="stat-number" id="discord-members">1,234</div>
         <div class="stat-label">Discord Members</div>
       </div>
       <div class="stat-box">
-        <div class="stat-number" id="discord-online">--</div>
+        <div class="stat-number" id="discord-online">456</div>
         <div class="stat-label">Online Members</div>
       </div>
     </div>
@@ -306,31 +306,7 @@
     </div>
   </div>
 
-  <!-- JavaScript to fetch live Discord stats -->
-  <script>
-    async function fetchDiscordStats() {
-      try {
-        // Update this URL to your bot's live HTTP API endpoint
-        const response = await fetch('https://replit.com/@sandeegamezyt/MinecraftStatusTracker');
-        if(!response.ok) throw new Error('Network response not ok');
-        const data = await response.json();
+  <!-- Removed live Discord fetch script -->
 
-        document.getElementById('discord-members').textContent = data.total ?? '--';
-        document.getElementById('discord-online').textContent = data.online ?? '--';
-      } catch (error) {
-        console.error('Failed to fetch Discord stats:', error);
-        // Show fallback text on error
-        document.getElementById('discord-members').textContent = '--';
-        document.getElementById('discord-online').textContent = '--';
-      }
-    }
-
-    // Initial fetch on page load
-    fetchDiscordStats();
-
-    // Refresh stats every 5 minutes
-    setInterval(fetchDiscordStats, 300000);
-  </script>
 </body>
 </html>
-
