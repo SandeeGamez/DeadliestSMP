@@ -1,1 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deadliest SMP Store</title>
+  <style>
+    body {
+      background-color: #121923;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #e64949;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      background-color: #e64949;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .back-btn:hover {
+      background-color: #c73d3d;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    .controls input,
+    .controls select {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background-color: #1e293b;
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .item {
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 0 4px #000;
+    }
+
+    .item h2 {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .item p.price {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .item ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 0;
+    }
+    .item ul li {
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    /* RANK BACKGROUNDS */
+    .vip-subscription        { background: linear-gradient(135deg, #f7e17b, #ffe780); box-shadow: 0 0 15px #ffe780; }
+    .vip-permanent           { background: linear-gradient(135deg, #fff9c4, #fbc02d); box-shadow: 0 0 15px #fbc02d; }
+
+    .vipplus-subscription    { background: linear-gradient(135deg, #c5a339, #f1d16f); box-shadow: 0 0 15px #f1d16f; }
+    .vipplus-permanent       { background: linear-gradient(135deg, #fbc02d, #f9a825); box-shadow: 0 0 20px #f9a825; }
+
+    .mvp-subscription        { background: linear-gradient(135deg, #b499ff, #d4b3ff); box-shadow: 0 0 15px #d4b3ff; }
+    .mvp-permanent           { background: linear-gradient(135deg, #ce93d8, #7b1fa2); box-shadow: 0 0 20px #7b1fa2; }
+
+    .mvpplus-subscription    { background: linear-gradient(135deg, #7f57db, #aa80ff); box-shadow: 0 0 15px #aa80ff; }
+    .mvpplus-permanent       { background: linear-gradient(135deg, #7b1fa2, #4a0072); box-shadow: 0 0 25px #4a0072; }
+
+    .deadly-subscription     { background: linear-gradient(135deg, #2e2e2e, #3a3a3a); box-shadow: 0 0 15px #666; }
+    .deadly-permanent        { background: linear-gradient(135deg, #000000, #434343); box-shadow: 0 0 25px #555; }
+
+    .deadliest-subscription  { background: linear-gradient(135deg, #ff5a5a, #9e2c2c); box-shadow: 0 0 15px #ff5a5a; }
+    .deadliest-permanent     { background: linear-gradient(135deg, #d32f2f, #b71c1c); box-shadow: 0 0 25px #b71c1c; }
+
+    .deadliestplus-subscription { background: linear-gradient(135deg, #a00000, #ff2a2a); box-shadow: 0 0 15px #ff2a2a; }
+    .deadliestplus-permanent    { background: linear-gradient(135deg, #b71c1c, #7f0000); box-shadow: 0 0 30px #7f0000; }
+
+    .jester-subscription     { background: linear-gradient(135deg, #8b4aff, #5d33a6); box-shadow: 0 0 15px #b184ff; }
+    .jester-permanent        { background: linear-gradient(135deg, #9c27b0, #4a0072); box-shadow: 0 0 30px #4a0072; }
+
+    .perk {
+      background: linear-gradient(135deg, #333, #444);
+      box-shadow: 0 0 15px #666;
+    }
+  </style>
+  <script>
+    function filterItems() {
+      const searchInput = document.getElementById("searchInput").value.toLowerCase();
+      const categorySelect = document.getElementById("categorySelect").value;
+      const items = document.querySelectorAll(".item");
+
+      items.forEach((item) => {
+        const name = item.getAttribute("data-name").toLowerCase();
+        const category = item.getAttribute("data-category");
+
+        const matchesSearch = name.includes(searchInput);
+        const matchesCategory = categorySelect === "all" || category === categorySelect;
+
+        item.style.display = matchesSearch && matchesCategory ? "block" : "none";
+      });
+    }
+  </script>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+  <h1>Deadliest SMP Store</h1>
+
+  <div class="controls">
+    <input
+      type="text"
+      id="searchInput"
+      oninput="filterItems()"
+      placeholder="Search ranks..."
+    />
+    <select id="categorySelect" onchange="filterItems()">
+      <option value="all">All</option>
+      <option value="subscription">Subscription</option>
+      <option value="permanent">Permanent</option>
+      <option value="perk">Perks</option>
+    </select>
+  </div>
+
+  <div class="grid">
+    <!-- VIP -->
+    <div class="item vip-subscription" data-name="vip" data-category="subscription">
+      <h2>🔑 VIP (2 Month)</h2>
+      <p class="price">₱40 / $0.72</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>2 Auction Slots</li>
+        <li>/kit Vip (10 hour cooldown)</li>
+        <li>2 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item vip-permanent" data-name="vip" data-category="permanent">
+      <h2>🔑 VIP (Permanent)</h2>
+      <p class="price">₱50 / $0.89</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>2 Auction Slots</li>
+        <li>/kit Vip (10 hour cooldown)</li>
+        <li>2 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- VIP+ -->
+    <div class="item vipplus-subscription" data-name="vip+" data-category="subscription">
+      <h2>🔑 VIP+ (2 Month)</h2>
+      <p class="price">₱60 / $1.08</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>4 Auction Slots</li>
+        <li>/kit Vip+ (12 hour cooldown)</li>
+        <li>2 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item vipplus-permanent" data-name="vip+" data-category="permanent">
+      <h2>🔑 VIP+ (Permanent)</h2>
+      <p class="price">₱75 / $1.29</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>4 Auction Slots</li>
+        <li>/kit Vip+ (12 hour cooldown)</li>
+        <li>2 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- MVP -->
+    <div class="item mvp-subscription" data-name="mvp" data-category="subscription">
+      <h2>🔑 MVP (2 Month)</h2>
+      <p class="price">₱80 / $1.44</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>6 Auction Slots</li>
+        <li>/kit Mvp (14 hour cooldown)</li>
+        <li>3 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item mvp-permanent" data-name="mvp" data-category="permanent">
+      <h2>🔑 MVP (Permanent)</h2>
+      <p class="price">₱100 / $1.80</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>6 Auction Slots</li>
+        <li>/kit Mvp (14 hour cooldown)</li>
+        <li>3 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- MVP+ -->
+    <div class="item mvpplus-subscription" data-name="mvp+" data-category="subscription">
+      <h2>🔑 MVP+ (2 Month)</h2>
+      <p class="price">₱100 / $1.80</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>8 Auction Slots</li>
+        <li>/kit Mvp+ (16 hour cooldown)</li>
+        <li>3 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item mvpplus-permanent" data-name="mvp+" data-category="permanent">
+      <h2>🔑 MVP+ (Permanent)</h2>
+      <p class="price">₱150 / $2.63</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>8 Auction Slots</li>
+        <li>/kit Mvp+ (16 hour cooldown)</li>
+        <li>3 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- Deadly -->
+    <div class="item deadly-subscription" data-name="deadly" data-category="subscription">
+      <h2>🔑 Deadly (2 Month)</h2>
+      <p class="price">₱150 / $2.70</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>10 Auction Slots</li>
+        <li>/kit Deadly (18 hour cooldown)</li>
+        <li>4 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item deadly-permanent" data-name="deadly" data-category="permanent">
+      <h2>🔑 Deadly (Permanent)</h2>
+      <p class="price">₱220 / $3.86</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>10 Auction Slots</li>
+        <li>/kit Deadly (18 hour cooldown)</li>
+        <li>4 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- Deadliest -->
+    <div class="item deadliest-subscription" data-name="deadliest" data-category="subscription">
+      <h2>🔑 Deadliest (2 Month)</h2>
+      <p class="price">₱180 / $3.24</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>15 Auction Slots</li>
+        <li>/kit Deadliest (20 hour cooldown)</li>
+        <li>4 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item deadliest-permanent" data-name="deadliest" data-category="permanent">
+      <h2>🔑 Deadliest (Permanent)</h2>
+      <p class="price">₱250 / $4.39</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>15 Auction Slots</li>
+        <li>/kit Deadliest (20 hour cooldown)</li>
+        <li>4 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- Deadliest+ -->
+    <div class="item deadliestplus-subscription" data-name="deadliest+" data-category="subscription">
+      <h2>🔑 Deadliest+ (2 Month)</h2>
+      <p class="price">₱240 / $4.32</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>20 Auction Slots</li>
+        <li>/kit Deadliest+ (24 hour cooldown)</li>
+        <li>5 Home Slots</li>
+      </ul>
+    </div>
+    <div class="item deadliestplus-permanent" data-name="deadliest+" data-category="permanent">
+      <h2>🔑 Deadliest+ (Permanent)</h2>
+      <p class="price">₱300 / $5.27</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Color</li>
+        <li>20 Auction Slots</li>
+        <li>/kit Deadliest+ (24 hour cooldown)</li>
+        <li>5 Home Slots</li>
+      </ul>
+    </div>
+
+    <!-- JESTER -->
+    <div class="item jester-subscription" data-name="jester" data-category="subscription">
+      <h2>🎭 Jester (2 Month)</h2>
+      <p class="price">₱280 / $5.04</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Colors</li>
+        <li>18 Auction Slots</li>
+        <li>/kit Jester (28 hour cooldown)</li>
+        <li>/kit Deadliest+ (20 hour cooldown)</li>
+        <li>6 Home Slots</li>
+        <li>/echest</li>
+        <li>/fly on lobby</li>
+      </ul>
+    </div>
+    <div class="item jester-permanent" data-name="jester" data-category="permanent">
+      <h2>🎭 Jester (Permanent)</h2>
+      <p class="price">₱400 / $7.02</p>
+      <ul>
+        <li>Tab Priority & Color</li>
+        <li>Tab Prefix</li>
+        <li>Nametag Prefix & Colors</li>
+        <li>18 Auction Slots</li>
+        <li>/kit Jester (28 hour cooldown)</li>
+        <li>/kit Deadliest+ (20 hour cooldown)</li>
+        <li>6 Home Slots</li>
+        <li>/echest</li>
+        <li>/fly on lobby</li>
+      </ul>
+    </div>
+
+    <!-- PERKS (just one card) -->
+    <div class="item perk" data-name="perk list" data-category="perk">
+      <h2>🎖️ PERK LIST</h2>
+      <ul>
+        <li>VIP: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 2 Auction Slots, /kit Vip (10 h cooldown), 2 Home Slots</li>
+        <li>VIP+: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 4 Auction Slots, /kit Vip+ (12 h cooldown), 2 Home Slots</li>
+        <li>MVP: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 6 Auction Slots, /kit Mvp (14 h cooldown), 3 Home Slots</li>
+        <li>MVP+: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 8 Auction Slots, /kit Mvp+ (16 h cooldown), 3 Home Slots</li>
+        <li>Deadly: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 10 Auction Slots, /kit Deadly (18 h cooldown), 4 Home Slots</li>
+        <li>Deadliest: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 15 Auction Slots, /kit Deadliest (20 h cooldown), 4 Home Slots</li>
+        <li>Deadliest+: Tab Priority & Color, Tab Prefix, Nametag Prefix & Color, 20 Auction Slots, /kit Deadliest+ (24 h cooldown), 5 Home Slots</li>
+        <li>Jester: Tab Priority & Color, Tab Prefix, Nametag Prefix & Colors, 18 Auction Slots, /kit Jester (28 h cooldown), /kit Deadliest+ (20 h cooldown), 6 Home Slots, /echest, /fly on lobby</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
 
