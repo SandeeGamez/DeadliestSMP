@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Deadliest SMP - Ranks</title>
+  <title>Deadliest SMP - Permanent Ranks</title>
   <style>
     body {
       background-color: #121923;
@@ -31,32 +31,101 @@
       text-align: center;
     }
 
+    /* Buttons container */
+    .section-switch {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section-switch button {
+      background-color: #2c2c2c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .section-switch button:hover:not(:disabled) {
+      background-color: #444;
+    }
+
+    .section-switch button:disabled {
+      background-color: #e64949;
+      cursor: default;
+    }
+
     .rank-card {
       margin-bottom: 25px;
-      background: #1e2a3a;
-      border: 3px solid #e64949;
       border-radius: 12px;
       padding: 20px 25px;
-      box-shadow: 0 0 25px #e64949bb;
+      box-shadow: 0 0 20px;
+      color: white;
+      text-shadow: 0 0 3px #000;
+    }
+
+    /* Background glow and colors by rank, VIP adjusted to white text */
+    .vip {
+      background: linear-gradient(135deg, #fff9c4, #fbc02d);
+      box-shadow: 0 0 15px #fbc02d;
+      color: white; /* changed from black to white */
+      text-shadow: 0 0 6px #000; /* added for better readability */
+    }
+    .vipplus {
+      background: linear-gradient(135deg, #fbc02d, #f9a825);
+      box-shadow: 0 0 20px #f9a825;
+      color: #fff;
+    }
+    .mvp {
+      background: linear-gradient(135deg, #ce93d8, #7b1fa2);
+      box-shadow: 0 0 20px #7b1fa2;
+      color: #fff;
+    }
+    .mvpplus {
+      background: linear-gradient(135deg, #7b1fa2, #4a0072);
+      box-shadow: 0 0 25px #4a0072;
+      color: #fff;
+    }
+    .deadly {
+      background: linear-gradient(135deg, #000000, #434343);
+      box-shadow: 0 0 25px #555;
+      color: #fff;
+    }
+    .deadliest {
+      background: linear-gradient(135deg, #d32f2f, #b71c1c);
+      box-shadow: 0 0 25px #b71c1c;
+      color: #fff;
+    }
+    .deadliestplus {
+      background: linear-gradient(135deg, #b71c1c, #7f0000);
+      box-shadow: 0 0 30px #7f0000;
+      color: #fff;
+    }
+    .jester {
+      background: linear-gradient(135deg, #9c27b0, #4a0072);
+      box-shadow: 0 0 30px #4a0072;
+      color: #fff;
     }
 
     .rank-title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #f9c74f;
-      text-shadow: 0 0 6px #ff6f6f;
       margin-bottom: 10px;
+      text-shadow: 0 0 6px #000;
     }
 
     .rank-perks {
       list-style-type: disc;
       padding-left: 20px;
-      color: #ddd;
       font-size: 1.1rem;
+      color: white;
     }
 
     .rank-perks li {
       margin-bottom: 6px;
+      text-shadow: 0 0 3px #000;
     }
 
     .back-btn {
@@ -79,10 +148,16 @@
 <body>
   <a href="index.html" class="back-btn">← Back to Home</a>
   <h1>Deadliest SMP</h1>
-  <h2 class="rank-header">🎖️ RANK PERKS LIST 🎖️</h2>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Vip – ₱40 / $0.72</div>
+  <div class="section-switch">
+    <button>2 Month Subscription Ranks</button>
+    <button disabled>Permanent Ranks</button>
+  </div>
+
+  <h2 class="rank-header">🎖️ PERMANENT RANK PERKS LIST 🎖️</h2>
+
+  <div class="rank-card vip">
+    <div class="rank-title">🔑 Vip – ₱50 / $0.89</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -93,8 +168,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Vip+ – ₱60 / $1.08</div>
+  <div class="rank-card vipplus">
+    <div class="rank-title">🔑 Vip+ – ₱75 / $1.29</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -105,8 +180,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Mvp – ₱80 / $1.44</div>
+  <div class="rank-card mvp">
+    <div class="rank-title">🔑 Mvp – ₱100 / $1.75</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -117,8 +192,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Mvp+ – ₱100 / $1.80</div>
+  <div class="rank-card mvpplus">
+    <div class="rank-title">🔑 Mvp+ – ₱150 / $2.63</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -130,8 +205,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Deadly – ₱150 / $2.70</div>
+  <div class="rank-card deadly">
+    <div class="rank-title">🔑 Deadly – ₱220 / $3.86</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -143,8 +218,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Deadliest – ₱180 / $3.24</div>
+  <div class="rank-card deadliest">
+    <div class="rank-title">🔑 Deadliest – ₱250 / $4.39</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -156,8 +231,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🔑 Deadliest+ – ₱240 / $4.32</div>
+  <div class="rank-card deadliestplus">
+    <div class="rank-title">🔑 Deadliest+ – ₱300 / $5.27</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
@@ -171,8 +246,8 @@
     </ul>
   </div>
 
-  <div class="rank-card">
-    <div class="rank-title">🎭 Jester – ₱280 / $5.04</div>
+  <div class="rank-card jester">
+    <div class="rank-title">🎭 Jester – ₱400 / $7.02</div>
     <ul class="rank-perks">
       <li>Tab Priority & Color</li>
       <li>Tab Prefix</li>
